@@ -30,4 +30,11 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
+	stage('Run container on DevServer'){
+		def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
+	sshagent(['pi-server']) {
+		sh 'ssh -o StrictHostKeyChecking=no pi@172.17.0.1 ${dockerRun}'
+
+}
+	}
 }
