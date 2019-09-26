@@ -1,4 +1,4 @@
-node {
+ode {
     def app
 
     stage('Clone repository') {
@@ -33,7 +33,7 @@ node {
 	stage('Run container on DevServer'){
 		def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
 	sshagent(['pi-server']) {
-		sh 'ssh -o StrictHostKeyChecking=no pi@172.17.0.1 ${dockerRun}'
+		sh 'ssh -o StrictHostKeyChecking=no pi@169.254.156.193 ${dockerRun}'
 
 }
 	}
