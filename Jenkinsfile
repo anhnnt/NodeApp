@@ -33,7 +33,7 @@ node {
 	stage('Run container on DevServer'){
 		def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
 	sshagent(['pi-server']) {
-		sh 'ssh -o StrictHostKeyChecking=no pi@169.254.156.193 ${dockerRun}'
+		sh 'ssh -o StrictHostKeyChecking=no pi@10.42.0.199 ${dockerRun}'
 
 }
 	}
