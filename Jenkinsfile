@@ -32,6 +32,6 @@ node {
     }
 	stage('Run container on DevServer'){
 		// def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
-		ssh 'docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp'
+		ssh pi@10.42.0.199 'docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp'
 }
 }
