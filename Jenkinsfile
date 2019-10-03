@@ -30,8 +30,8 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
-	/*stage('Run container on DevServer'){
+	stage('Run container on DevServer'){
 		// def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
 		ssh pi ' docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp '
-}*/
+}
 }
