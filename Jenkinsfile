@@ -25,7 +25,7 @@ node {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
-	    docker.withDockerRegistry(credentialsId: 'dockerHub', url: 'https://registry.hub.docker.com')
+	    docker.withRegistry(credentialsId: 'dockerHub', url: 'https://registry.hub.docker.com')
         // docker.withRegistry('https://registry.hub.docker.com', 'dockerHub')
 	    {
             app.push("${env.BUILD_NUMBER}")
@@ -36,6 +36,6 @@ node {
 	stage('Run container on DevServer'){
 		// def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
 		// ssh pi@10.42.0.199 ' docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp '
-		sh label: '', script: 'ssh pi \' docker run -p 8081:8000 -d --name test-jenkins nonah/nodeapp \''
+		sh label: '', script: 'ssh citeam@194.110.231.139 \' docker run -p 8081:8000 -d --name test-jenkins sampleacc54/nodeapp1 \''
 }
 }
