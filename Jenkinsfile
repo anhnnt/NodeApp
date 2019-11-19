@@ -36,6 +36,6 @@ node {
 	stage('Run container on DevServer'){
 		// def dockerRun = "docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp"
 		// ssh pi@10.42.0.199 ' docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp '
-		sh label: '', script: 'ssh -oStrictHostKeyChecking=no -i citeam@194.110.231.139 uptime \' docker run -p 8081:8000 -d --name test-jenkins sampleacc54/nodeapp1 \''
+		sh label: '', script: 'ssh -oStrictHostKeyChecking=no -i /home/citeam/.ssh/id_ed25519.pub citeam@194.110.231.139 uptime \' docker run -p 8081:8000 -d --name test-jenkins sampleacc54/nodeapp1 \''
 }
 }
