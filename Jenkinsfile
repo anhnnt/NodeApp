@@ -39,7 +39,8 @@ node {
 }	
 } */
 stage('DeployToProduction') {
-	sh 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139 \' kubernetesDeploy configs: 'kube.yml', kubeconfigId: 'kubeconfig' \''
-            
+	sshagent(['citeam']) {
+	sh 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139 \' kubernetesDeploy configs: 'kube.yml', kubeconfigId: 'kubeconfig'\''
+      }      
         }
     }	
