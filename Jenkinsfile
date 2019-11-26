@@ -40,7 +40,6 @@ node {
 } */
 stage('DeployToProduction') {
             steps {
-                milestone(1)
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'kube.yml',
