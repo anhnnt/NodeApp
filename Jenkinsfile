@@ -32,10 +32,21 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
-	stage('Run container on DevServer'){
+/*	stage('Run container on DevServer'){
 		sshagent(['citeam']) {
 			sh label: '', script: 'ssh -oStrictHostKeyChecking=no -y citeam@194.110.231.139 uptime'
 			sh label: '', script: 'ssh -v citeam@194.110.231.139 \' docker run -p 8000:8000 -d --name nodeapp sampleacc54/nodeapp1\''
 }	
-}
+} */
+stage('DeployToProduction') {
+            steps {
+                milestone(1)
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'kube.yml',
+                    enableConfigSubstitution: true
+                )
+            }
+        }
+    }	
 }
