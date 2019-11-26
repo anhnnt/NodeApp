@@ -34,6 +34,15 @@ node {
     }
 	stage('Run container on DevServer'){
 		// ssh pi@10.42.0.199 ' docker run -p 8080:8080 -d --name test-jenkins nonah/nodeapp '
-		sh label: '', script: 'ssh -oStrictHostKeyChecking=no -y citeam@194.110.231.139 uptime \' docker run -p 8081:8000 -d --name test-jenkins sampleacc54/nodeapp1 \''
+		sshagent(['citeam']) {
+    // some block
+			sh label: '', script: 'ssh -oStrictHostKeyChecking=no -y citeam@194.110.231.139 uptime'
+			sh label: '', script: '''ssh -v citeam@194.110.231.139
+docker run -p 8000:8000 -d --name nodeapp sampleacc54/nodeapp1'''
+}
+		
+		// sh ' ssh -oStrictHostKeyChecking=no -y citeam@194.110.231.139 uptime \' docker run -p 8081:8000 -d --name test-jenkins sampleacc54/nodeapp1 \''
+
+		
 }
 }
