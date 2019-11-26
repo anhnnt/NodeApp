@@ -39,7 +39,7 @@ node {
 }	
 } */
 stage('DeployToProduction') {
-	sh label: '', script: 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139 \' kubernetesDeploy configs: 'kube.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig'\''
+	sh 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139 \' kubernetesDeploy configs: 'kube.yml', kubeconfigId: 'kubeconfig' \''
             
         }
     }	
