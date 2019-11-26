@@ -8,7 +8,7 @@ spec:
     app: train-schedule
   ports:
   - protocol: TCP
-    port: 8081
+    port: 8000
 
 ---
 
@@ -34,11 +34,11 @@ spec:
       - name: train-schedule
         image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
         ports:
-        - containerPort: 8081
+        - containerPort: 8000
         livenessProbe:
           httpGet:
             path: /
-            port: 8081
+            port: 8000
           initialDelaySeconds: 15
           timeoutSeconds: 1
           periodSeconds: 10
