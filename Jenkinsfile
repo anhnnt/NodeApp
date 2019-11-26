@@ -39,12 +39,6 @@ node {
 }	
 } */
 stage('DeployToProduction') {
-            steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'kube.yml',
-                    enableConfigSubstitution: true
-                )
-            }
+            kubernetesDeploy configs: 'kube.yml', credentialsType: 'SSH', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: 'citeam', sshServer: 'citeam@194.110.231.139'], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
         }
     }	
