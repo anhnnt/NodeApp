@@ -40,7 +40,7 @@ node {
 } */
 stage('DeployToProduction') {
 	sshagent(['citeam']) {
-	sh 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139 \' 
+	sh 'ssh -oStrictHostKeyChecking=no -y -v citeam@194.110.231.139' 
 		sh 'kubernetesDeploy configs: 'kube.yml', kubeconfigId: 'kubeconfig''
       }      
         }
